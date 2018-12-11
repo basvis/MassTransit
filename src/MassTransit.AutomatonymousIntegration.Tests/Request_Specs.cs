@@ -382,7 +382,7 @@ namespace MassTransit.AutomatonymousIntegration.Tests
                         {
                             await Console.Out.WriteLineAsync("Request Completed!");
 
-                            context.Instance.Name = context.Data.Name;
+                            //context.Instance.Name = context.Data.Name;
                         })
                         .Publish(context => new MemberRegisteredImpl(context.Instance))
                         .TransitionTo(Registered),
@@ -395,7 +395,7 @@ namespace MassTransit.AutomatonymousIntegration.Tests
             }
 
             public Request<TestState, ValidateAddress, AddressValidated> ValidateAddress { get; private set; }
-            public Request<TestState, ValidateName, NameValidated> ValidateName { get; private set; }
+            public Request<TestState, ValidateName, AddressValidated> ValidateName { get; private set; }
 
             public Event<RegisterMember> Register { get; private set; }
 
